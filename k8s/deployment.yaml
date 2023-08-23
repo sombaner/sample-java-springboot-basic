@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-java-springboot
+  name: sample-java-springboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-java-springboot
+  template:
+    metadata:
+      labels:
+        app: sample-java-springboot
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/sample-nodejs/sample-java-springboot:latest
+          imagePullPolicy: Always
+          name: sample-java-springboot
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
